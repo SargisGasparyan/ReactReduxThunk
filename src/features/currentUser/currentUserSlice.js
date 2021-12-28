@@ -1,3 +1,4 @@
+import {loadCurrentUser} from "../../currentUserApi";
 
 export const currentUserReducer=(state={},action)=>{
     if (action.type==="CHANGE"){
@@ -23,5 +24,11 @@ export const actionCreator1=(value)=> {
         payload:{
             name:value
         }
+    }
+}
+
+export function loadUser(){
+    return (dispatch,getState)=>{
+        return loadCurrentUser().then((res)=>dispatch(actionCreator1(res.name)))
     }
 }

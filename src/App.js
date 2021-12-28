@@ -1,12 +1,17 @@
 import './App.css';
 import {useSelector,useDispatch} from 'react-redux'
-import {getName} from "./features/currentUser/currentUserSlice";
+import {getName, loadUser} from "./features/currentUser/currentUserSlice";
 import {actionCreator1} from "./features/currentUser/currentUserSlice";
+import {useEffect} from "react";
 
 function App() {
     const value=useSelector(getName)
     const dispatch = useDispatch()
-  return (
+    useEffect(()=> {
+        dispatch(loadUser())
+    },[])
+
+    return (
     <div className="App">
       <header className="App-header">
           <h1>{value}</h1>

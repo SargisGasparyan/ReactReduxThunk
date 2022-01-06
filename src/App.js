@@ -3,9 +3,12 @@ import {useSelector,useDispatch} from 'react-redux'
 import {getName, loadUser} from "./features/currentUser/currentUserSlice";
 import {actionCreator1} from "./features/currentUser/currentUserSlice";
 import {useEffect} from "react";
+import {addCount, getCount, removeCount} from "./features/countUser/countUser";
+import {randomNumber} from "./features/countUser/countUser";
 
 function App() {
     const value=useSelector(getName)
+    const count=useSelector(getCount)
     const dispatch = useDispatch()
     useEffect(()=> {
         dispatch(loadUser())
@@ -20,6 +23,11 @@ function App() {
           }}/>
 
       </header>
+        <br/>
+        <h1>{count}</h1>
+        <button onClick={()=>dispatch(addCount())}>add</button>
+        <button onClick={()=>dispatch(removeCount())}>remove</button>
+        <button onClick={()=>dispatch(randomNumber())}>Add Random Number</button>
     </div>
   );
 }

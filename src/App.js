@@ -1,6 +1,6 @@
 import './App.css';
 import {useSelector,useDispatch} from 'react-redux'
-import {getName, loadUser} from "./features/currentUser/currentUserSlice";
+import {getName, loadUser,getArr} from "./features/currentUser/currentUserSlice";
 import {actionCreator1} from "./features/currentUser/currentUserSlice";
 import {useEffect} from "react";
 import {addCount, getCount, removeCount} from "./features/countUser/countUser";
@@ -8,6 +8,7 @@ import {randomNumber} from "./features/countUser/countUser";
 
 function App() {
     const value=useSelector(getName)
+    const arr=useSelector(getArr)
     const count=useSelector(getCount)
     const dispatch = useDispatch()
     useEffect(()=> {
@@ -28,6 +29,7 @@ function App() {
         <button onClick={()=>dispatch(addCount())}>add</button>
         <button onClick={()=>dispatch(removeCount())}>remove</button>
         <button onClick={()=>dispatch(randomNumber())}>Add Random Number</button>
+        <h1>{arr}</h1>
     </div>
   );
 }
